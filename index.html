@@ -1,374 +1,325 @@
-<html>
-    
-    <head>
-        <title> Activity Calendar by Dhrubajyoti</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="evo-calendar.min.css">
-        <link rel="stylesheet" href="evo-calendar.midnight-blue.min.css">
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
-        
-    </head>
-    
-    <body>
-    
-    
-   <div class="hero">
-       
-       
-   <div id="calendar"></div>    
-       
-       
-        
-        </div> 
-    
-    
-    
-    
-        
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Calendar with Monthly Summary and Quotes</title>
+    <link rel="stylesheet" href="evo-calendar.min.css">
+    <link rel="stylesheet" href="evo-calendar.midnight-blue.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .calendar-container {
+            width: 100%;
+            display: block;
+        }
+        #calendar {
+            margin-bottom: 20px;
+        }
+        #monthly-events {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #0074A2; /* Same color as calendar's theme */
+            border-radius: 8px;
+            background-color: #1c2b3b; /* Midnight blue background */
+            color: white; /* White text for better contrast */
+        }
+        #monthly-events h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        #monthly-events ul {
+            list-style: none;
+            padding: 0;
+        }
+        #monthly-events li {
+            margin-bottom: 8px;
+        }
+        #monthly-events li strong {
+            color: #ffcc00; /* Highlighted color for the date */
+        }
+        #monthly-quote {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #0074A2;
+            border-radius: 8px;
+            background-color: #1c2b3b;
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+   #monthly-quote p {
+            color: #ffff00; /* Fluorescent Green for the quote text */
+            font-size: 16px;
+            font-weight: bold;
+        }
+   #monthly-events p {
+            color: #54ff9f; /* Fluorescent Green for the quote text */
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div id="calendar"></div>
+        <div id="monthly-quote">
+            <h3></h3>
+            <p id="quote-text">Loading quote...</p>
+        </div>
+        <div id="monthly-events">
+            <h4><p class="underlined-text" style="color: #a7fc00;">Month's Key Dates to Help You Plan the Month</p></h4>
+
+
+
+
+            <ul id="event-list">
+                <!-- Monthly events will be populated here -->
+            </ul>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="evo-calendar.min.js"></script>
-    
     <script>
         $(document).ready(function() {
-    $('#calendar').evoCalendar({
-        
-        theme: "midnight-blue",
-        calendarEvents: [
-                          
-{
-id: 'event1', // Event's ID (required)
-name: "New Year day", // Event name (required)
- date: "January/1/2025", // Event date (required)
-description: "Happy New Year _ from Dhrubajyoti - Please Visit : https://www.dhrubajyoti.co.in",
-type: "holiday", // Event type (required)
-everyYear: true // Same event every year (optional)
-},
-{
-id: 'event2', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/14/2025", // Event date (required)
-description: "Magh Bihu & Tusu Puja",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event3', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/15/2025", // Event date (required)
-description: "Magh Bihu & Tusu Puja",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event4', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/23/2025", // Event date (required)
-description: "Netaji's Birthday",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event5', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/26/2025", // Event date (required)
-description: "Republic Day",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event6', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/28/2025", // Event date (required)
-description: "Gwthar Bathou San",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event7', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "January/31/2025", // Event date (required)
-description: "Me-Dam-Me-Phi",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event8', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "February/12/2025", // Event date (required)
-description: "Bir Chilarai Divas",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event9', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "March/13/2025", // Event date (required)
-description: "Dol Jatra",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event10', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "March/31/2025", // Event date (required)
-description: "Id-Ul-Fitre",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event11', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/14/2025", // Event date (required)
-description: "Bohag Bihu",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event12', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/15/2025", // Event date (required)
-description: "Bohag Bihu",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event13', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/16/2025", // Event date (required)
-description: "Bohag Bihu",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event14', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/18/2025", // Event date (required)
-description: "Good Friday",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event15', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/21/2025", // Event date (required)
-description: "Sati Sadhani Divas",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event16', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "April/28/2025", // Event date (required)
-description: "Tithi of Damodardeva",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event17', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "May/1/2025", // Event date (required)
-description: "May Day",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event18', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "May/12/2025", // Event date (required)
-description: "Buddha Purnima",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event19', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "May/13/2025", // Event date (required)
-description: "Janmotsav of Sri Sri Madhabdev",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event20', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "June/7/2025", // Event date (required)
-description: "Id-Uz-Zuha",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event21', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "August/14/2025", // Event date (required)
-description: "Tirobhab Tithi of Sri Sri Madhabdeva",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-}, 
-{
-id: 'event22', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "August/15/2025", // Event date (required)
-description: "Independence Day",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event23', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "August/16/2025", // Event date (required)
-description: "Janmastomi",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event24', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "August/25/2025", // Event date (required)
-description: "Tithi of Srimanta Shankardeva",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event25', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "September/3/2025", // Event date (required)
-description: "Karam Puja",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event26', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "September/29/2025", // Event date (required)
-description: "Maha Saptami",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event27', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "September/30/2025", // Event date (required)
-description: "Maha Ashtami",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event28', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/1/2025", // Event date (required)
-description: "Maha Navami",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event29', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/2/2025", // Event date (required)
-description: "Maha Dasami",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event30', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/2/2025", // Event date (required)
-description: "Janmotsav of Srimanta Shankardev",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event31', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/2/2025", // Event date (required)
-description: "Mahatma Gandhi’s Birthday",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event32', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/18/2025", // Event date (required)
-description: "Kati Bihu",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event33', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/20/2025", // Event date (required)
-description: "Diwali",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event34', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/20/2025", // Event date (required)
-description: "Kali Puja",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event35', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/23/2025", // Event date (required)
-description: "Bhatri Dwitiya / Bhai Dooj",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event36', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "October/27/2025", // Event date (required)
-description: "Chhat Puja",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event37', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: "November/5/2025", // Event date (required)
-description: "Guru Nanak Jayanti",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event38', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: " November/24/2025", // Event date (required)
-description: "Lachit Divas",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event39', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: " December/2/2025", // Event date (required)
-description: "Asom Divas / Su-Ka_Pha Divas",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
-{
-id: 'event40', // Event's ID (required)
-name: "Holiday", // Event name (required)
-date: " December/25/2025", // Event date (required)
-description: "Christmas",
-type: "holiday", // Event type (required)
-everyYear: false // Same event every year (optional)
-},
+            // Event data
+            const calendarEvents = [
+{ id: 'event_01', name: "Restricted Holiday", date: "2025/01/01", description: "New Year's Day", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_03', name: "Holiday", date: "2025/01/05", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_02', name: "Restricted Holiday", date: "2025/01/05", description: "Rongker Karkli", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_04', name: "Holiday", date: "2025/01/11", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_05', name: "Holiday", date: "2025/01/12", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_06', name: "Restricted Holiday", date: "2025/01/13", description: "Uruka of Magh Bihu", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_07', name: "Holiday", date: "2025/01/14", description: "Magh Bihu & Tusu Puja", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_08', name: "Holiday", date: "2025/01/15", description: "Magh Bihu & Tusu Puja", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_09', name: "Restricted Holiday", date: "2025/01/17", description: "Silpi Divas", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_10', name: "Holiday", date: "2025/01/19", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_11', name: "Holiday", date: "2025/01/23", description: "Netaji's Birthday", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_12', name: "Holiday", date: "2025/01/25", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_13', name: "Holiday", date: "2025/01/26", description: "Republic Day", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_14', name: "Holiday", date: "2025/01/26", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_15', name: "Restricted Holiday", date: "2025/01/27", description: "Busu Dima Festival", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_16', name: "Holiday", date: "2025/01/28", description: "Gwthar Bathou San", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_17', name: "Holiday", date: "2025/01/31", description: "Me-Dam-Me-Phi", type: "Holiday", everyYear: false, color: "#FF0000"  },
+{ id: 'event_18', name: "Holiday", date: "2025/02/02", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_19', name: "Holiday", date: "2025/02/08", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_20', name: "Holiday", date: "2025/02/09", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_21', name: "Holiday", date: "2025/02/12", description: "Bir Chilaray Divas", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_22', name: "Restricted Holiday", date: "2025/02/14", description: "Shab-E-Barat", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_23', name: "Holiday", date: "2025/02/16", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_24', name: "Restricted Holiday", date: "2025/02/18", description: "Karbi-Dehal-Kachir Dom", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_25', name: "Restricted Holiday", date: "2025/02/19", description: "Ali-Aye-Ligang", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_26', name: "Holiday", date: "2025/02/22", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_27', name: "Holiday", date: "2025/02/23", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_28', name: "Restricted Holiday", date: "2025/02/26", description: "Sivaratri", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_29', name: "Holiday", date: "2025/03/02", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_30', name: "Holiday", date: "2025/03/08", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_31', name: "Holiday", date: "2025/03/09", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_37', name: "Restricted Holiday", date: "2025/03/10", description: "Khring Khring Baithow Puja", type: "Restricted Holiday", everyYear: false, color: "#ffff00"  },
+{ id: 'event_32', name: "Holiday", date: "2025/03/14", description: "Dol Jatra", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_33', name: "Holiday", date: "2025/03/16", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_35', name: "Holiday", date: "2025/03/22", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_36', name: "Holiday", date: "2025/03/23", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_37', name: "Restricted Holiday", date: "2025/03/28", description: "Lailatur Qadar", type: "Restricted Holiday", everyYear: false, color: "#ffff00"  },
+{ id: 'event_36', name: "Holiday", date: "2025/03/30", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_36', name: "Holiday", date: "2025/03/31", description: "Id- UI -Fitre", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_38', name: "Bank Holiday", date: "2025/04/01", description: "Annual Closing of Bank Accounts", type: "Bank Holiday", everyYear: false, color: "White" },
+{ id: 'event_38', name: "Holiday", date: "2025/04/06", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_39', name: "Restricted Holiday", date: "2025/04/10", description: "Mahabir Jayanti", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_40', name: "Holiday", date: "2025/04/12", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_41', name: "Holiday", date: "2025/04/13", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_42', name: "Holiday", date: "2025/04/14", description: "Bohag Bihu", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_43', name: "Holiday", date: "2025/04/15", description: "Bohag Bihu", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_44', name: "Holiday", date: "2025/04/16", description: "Bohag Bihu", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_45', name: "Restricted Holiday", date: "2025/04/16", description: "Deuri Bihu", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_44', name: "Holiday", date: "2025/04/18", description: "Good Friday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_45', name: "Restricted Holiday", date: "2025/04/18", description: "Birthday of Gurudev Kalicharan Brahma", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_45', name: "Restricted Holiday", date: "2025/04/19", description: "Easter Saturday", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_46', name: "Holiday", date: "2025/04/20", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_44', name: "Holiday", date: "2025/04/21", description: "Sati Sadhani Divas", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_47', name: "Holiday", date: "2025/04/26", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_48', name: "Holiday", date: "2025/04/27", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_44', name: "Holiday", date: "2025/04/28", description: "Tithi of Damodar Dev", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_49', name: "Holiday", date: "2025/05/01", description: "May Day", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_50', name: "Restricted Holiday", date: "2025/05/02", description: "Tithi of Gopal Dev", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_51', name: "Holiday", date: "2025/05/04", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_52', name: "Holiday", date: "2025/05/10", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_53', name: "Holiday", date: "2025/05/11", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_54', name: "Holiday", date: "2025/05/12", description: "Buddha Purnima", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_55', name: "Restricted Holiday", date: "2025/05/12", description: "Sati Radhika Utsav", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_56', name: "Holiday", date: "2025/05/18", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_58', name: "Holiday", date: "2025/05/24", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_57', name: "Restricted Holiday", date: "2025/05/24", description: "Motak Raja Swargadeo Sarbananda Singh Divas", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_59', name: "Holiday", date: "2025/05/25", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_60', name: "Restricted Holiday", date: "2025/05/26", description: "Tithi of Hari Dev", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_61', name: "Holiday", date: "2025/06/01", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_62', name: "Restricted Holiday", date: "2025/06/03", description: "Birthday of Sri Krishnaguru", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_63', name: "Holiday", date: "2025/06/07", description: "Id-ul-Zuha", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_64', name: "Holiday", date: "2025/06/08", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_65', name: "Restricted Holiday", date: "2025/06/11", description: "Baikhowa Festival", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_66', name: "Holiday", date: "2025/06/12", description: "Janmotsav of Sri Sri Madhabdeva", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_67', name: "Holiday", date: "2025/06/14", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_68', name: "Holiday", date: "2025/06/15", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_69', name: "Restricted Holiday", date: "2025/06/20", description: "Death Anniversary of Bishnu Prasad Rabha", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_70', name: "Holiday", date: "2025/06/22", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_71', name: "Holiday", date: "2025/06/28", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_72', name: "Holiday", date: "2025/06/29", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_73', name: "Restricted Holiday", date: "2025/06/30", description: "Hul Divas", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_74', name: "Holiday", date: "2025/07/06", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_76', name: "Holiday", date: "2025/07/12", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_77', name: "Holiday", date: "2025/07/13", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_75', name: "Restricted Holiday", date: "2025/07/13", description: "Birthday of Nepali Poet Bhanu Bhakta Acharya", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_78', name: "Holiday", date: "2025/07/20", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_80', name: "Holiday", date: "2025/07/26", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_81', name: "Holiday", date: "2025/07/27", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_82', name: "Holiday", date: "2025/08/03", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_83', name: "Holiday", date: "2025/08/09", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_85', name: "Holiday", date: "2025/08/10", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_85', name: "Restricted Holiday", date: "2025/08/13", description: "Deth Anniversary of Bir Tikendrajit", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_86', name: "Holiday", date: "2025/08/15", description: "Independence Day", type: "Holiday", everyYear: true, color: "#FF0000"  },
+{ id: 'event_87', name: "Holiday", date: "2025/08/17", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_88', name: "Holiday", date: "2025/08/23", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_89', name: "Holiday", date: "2025/08/24", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_90', name: "Holiday", date: "2025/08/25", description: "Tirubhav Tithi of Srimanta Sankardeva", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/08/28", description: "Nau Khai Festival", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_92', name: "Holiday", date: "2025/08/31", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_93', name: "Holiday", date: "2025/09/03", description: "Karam Puja", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/09/05", description: "Fateha-e-Dwaz Daham", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_93', name: "Holiday", date: "2025/09/07", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_93', name: "Holiday", date: "2025/09/12", description: "Tirubhav Tithi of Sri Sri Madhabdeva", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_94', name: "Holiday", date: "2025/09/13", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_94', name: "Holiday", date: "2025/09/14", description: "Janmastomi", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_95', name: "Holiday", date: "2025/09/14", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/09/16", description: "Birthday of Sri Sri Thakur Anukul Chandra", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_96', name: "Holiday", date: "2025/09/21", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_97', name: "Holiday", date: "2025/09/27", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_98', name: "Holiday", date: "2025/09/28", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_99', name: "Holiday", date: "2025/09/29", description: "Durga Puja", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_99', name: "Holiday", date: "2025/09/30", description: "Durga Puja", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_100', name: "Holiday", date: "2025/10/01", description: "Durga Puja", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_101', name: "Holiday", date: "2025/10/02", description: "Vijoya Dasami ", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_102', name: "Holiday", date: "2025/10/02", description: "Janmotsav of Sri Sri Sankardev ", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_103', name: "Holiday", date: "2025/10/02", description: "Birth day of Mahatma Gandhi", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_100', name: "Holiday", date: "2025/10/05", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_104', name: "Half Holiday", date: "2025/10/06", description: "Lakshmi Puja", type: "Half Holiday", everyYear: false, color: "#7cfc00" },
+{ id: 'event_105', name: "Holiday", date: "2025/10/11", description: "2nd Saturday", type: "Holiday", everyYear: true, color: "#FF0000"  },
+{ id: 'event_106', name: "Holiday", date: "2025/10/12", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_107', name: "Holiday", date: "2025/10/18", description: "Kati Bihu", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_108', name: "Holiday", date: "2025/10/19", description: "Sunday", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_105', name: "Holiday", date: "2025/10/20", description: "Kali Puja & Diwali", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_105', name: "Holiday", date: "2025/10/23", description: "Bhatri Dwitiya", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/10/23", description: "Abhibhav Tithi of Sri Sri Bhubaneswar Sadhu Thakur", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_106', name: "Holiday", date: "2025/10/25", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_107', name: "Holiday", date: "2025/10/26", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_108', name: "Holiday", date: "2025/10/28", description: "Chhat Puja", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/11/01", description: "Kuki Chavang kut", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_110', name: "Holiday", date: "2025/11/02", description: "Sunday", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_111', name: "Holiday", date: "2025/11/05", description: "Guru Nanak's Birthday", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/11/07", description: "Wangala Festival", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_113', name: "Holiday", date: "2025/11/08", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_114', name: "Holiday", date: "2025/11/09", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_114', name: "Holiday", date: "2025/11/16", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/11/19", description: "Bir Raghav Moran Divas", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_117', name: "Special Casual Leave", date: "2025/11/20", description: "Matri Pitri Vandana", type: "Special Casual Leave", everyYear: false, color: "#7cfc00" },
+{ id: 'event_117', name: "Special Casual Leave", date: "2025/11/21", description: "Matri Pitri Vandana", type: "Special Casual Leave", everyYear: false, color: "#7cfc00" },
+{ id: 'event_119', name: "Holiday", date: "2025/11/22", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_120', name: "Holiday", date: "2025/11/23", description: "Sunday", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_120', name: "Holiday", date: "2025/11/24", description: "Lachit Divas", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_91', name: "Restricted Holiday", date: "2025/11/24", description: "Death Anniversary of Guru Tegh Bahadur Ji", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_120', name: "Holiday", date: "2025/11/30", description: "Sunday", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_123', name: "Holiday", date: "2025/12/02", description: "Asom Divas (Su-Ka-Pha Divas)", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_124', name: "Restricted Holiday", date: "2025/12/03", description: "Gaan Ngai", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_125', name: "Restricted Holiday", date: "2025/12/05", description: "Sikpui Ruoi (Harvest Festival of Hmar Community)", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_126', name: "Holiday", date: "2025/12/07", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_127', name: "Restricted Holiday", date: "2025/12/10", description: "Martyr's Day", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_128', name: "Holiday", date: "2025/12/13", description: "2nd Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_129', name: "Holiday", date: "2025/12/14", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_130', name: "Holiday", date: "2025/12/21", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_131', name: "Restricted Holiday", date: "2025/12/24", description: "Christmas Eve", type: "Restricted Holiday", everyYear: false, color: "#ffff00" },
+{ id: 'event_132', name: "Holiday", date: "2025/12/25", description: "Christmas Day", type: "Holiday", everyYear: true, color: "#FF0000" },
+{ id: 'event_133', name: "Holiday", date: "2025/12/27", description: "4th Saturday", type: "Holiday", everyYear: false, color: "#FF0000" },
+{ id: 'event_134', name: "Holiday", date: "2025/12/28", description: "Sunday", type: "Holiday", everyYear: false, color: "#FF0000" },
+
+{ id: 'event42', name: "*", badge: "To start participatory planning exercise", date: ["2025/08/15", "2025/08/16"], description: "As per Para 7, Schedule (1) of the Mahatma Gandhi NREG Act", type: "event", color: "#2c6ee8" },
 
 
-]
-       
-        
-    })
-}) 
-        
-        
-        </script>
-        
-    </body>
-    
+
+
+
+            ];
+
+            // Month-wise quotes
+            const monthQuotes = [
+"The beginning of the year is the perfect time to set your goals high and work tirelessly toward them",
+"A workplace isn't just a space to work; it's a space to grow, to innovate, and to learn",
+"Teamwork is the art of blending individual strengths into a collective force that drives greater success",
+"Collaboration is the key to unlocking creative potential",
+"In work, consistency is the bridge between goals and accomplishment",
+"A positive workplace is a foundation for success",
+"Teamwork is the fuel that allows common people to attain uncommon results",
+"Great things in business are never done by one person",
+"Hard work and perseverance turn dreams into reality",
+"In a productive workplace, every challenge is seen as an opportunity for growth",
+"Teamwork is not just about working together; it’s about challenging each other, motivating each other, and pushing each other to achieve greatness",
+"As the year draws to a close, remember: collaboration is the secret ingredient to turning big ideas into even bigger achievements"
+            ];
+
+            // Initialize calendar
+            $('#calendar').evoCalendar({
+                theme: "midnight-blue",
+                calendarEvents: calendarEvents
+            });
+
+            // Function to populate events of the current month
+            function populateMonthlyEvents(selectedMonth) {
+                const eventsForMonth = calendarEvents.filter(event => {
+                    const eventDate = new Date(event.date);
+                    return eventDate.getMonth() === selectedMonth;
+                });
+
+                const eventList = $('#event-list');
+                eventList.empty();
+
+                if (eventsForMonth.length > 0) {
+                    eventsForMonth.forEach(event => {
+                        // Format the date to DD/MM/YYYY
+                        const eventDate = new Date(event.date);
+                        const formattedDate = `${String(eventDate.getDate()).padStart(2, '0')}/${String(eventDate.getMonth() + 1).padStart(2, '0')}/${eventDate.getFullYear()}`;
+
+                        eventList.append(`<li><strong>${formattedDate} -</strong> ${event.description}</li>`);
+                    });
+                } else {
+                    eventList.append('<li>No important dates this month.</li>');
+                }
+            }
+
+            // Function to set the monthly quote
+            function setMonthlyQuote(monthIndex) {
+                const quoteText = monthQuotes[monthIndex];
+                $('#quote-text').text(quoteText);
+            }
+
+            // Initialize with the current month
+            const currentMonth = new Date().getMonth();
+            populateMonthlyEvents(currentMonth);
+            setMonthlyQuote(currentMonth);
+
+            // Listen for month changes and update the important dates and quote
+            $('#calendar').on('selectMonth', function(event, newMonth) {
+                populateMonthlyEvents(newMonth);
+                setMonthlyQuote(newMonth);
+            });
+
+            // Listen for day selection and update important dates accordingly
+            $('#calendar').on('selectDate', function(event, newDate) {
+                const selectedMonth = new Date(newDate).getMonth();
+                populateMonthlyEvents(selectedMonth);
+                setMonthlyQuote(selectedMonth);
+            });
+        });
+    </script>
+</body>
 </html>
